@@ -256,7 +256,10 @@ class BasicSearch(FlightSearch):
         returning_flights= []
 
         try:
-            departing_flights= self.sort_flights_by_price(super().search_flights_api(self.where_from, self.where_to, self.departure_date, self.passengers))
+            if self.amadeus_client != None:
+              departing_flights= super().search_flights_api(self.where_from, self.where_to, self.departure_date, self.passengers)
+            else:
+              departing_flights= super().generate_mock_flights(self.where_from, self.where_to, self.departure_date)
         except Exception as e:
             print(f"Error searching flights with Amadeus API: {e}")
 
@@ -273,7 +276,10 @@ class BasicSearch(FlightSearch):
             print(f"\n---\nSearching return flights from {self.where_to} to {self.where_from} {returning_time_info}on {self.return_date}...")
 
             try:
-                returning_flights= self.sort_flights_by_price(super().search_flights_api(self.where_to, self.where_from, self.return_date, self.passengers))
+                if self.amadeus_client != None:
+                  returning_flights= super().search_flights_api(self.where_to, self.where_from, self.return_date, self.passengers)
+                else:
+                  returning_flights= super().generate_mock_flights(self.where_to, self.where_from, self.return_date)
             except Exception as e:
                 print(f"Error searching flights with Amadeus API: {e}")
 
