@@ -113,7 +113,7 @@ def handle_basic_search(amadeus_client):
     passengers= int(passengers)
 
     while True:
-        departure_date = input("Enter your departure date (e.g. 2024-12-23): ")
+        departure_date = input("Enter your departure date (YYYY-MM-DD e.g. 2024-12-23): ")
         try:
             assert datetime.strptime(departure_date, "%Y-%m-%d")
             assert datetime.strptime(departure_date, "%Y-%m-%d")>datetime.now()
@@ -122,7 +122,7 @@ def handle_basic_search(amadeus_client):
             print("\n departure_date must be in the format 'YYYY-MM-DD' and it must be in the future. \n")
 
     while True:
-        departure_min_departure_time = get_optional_input("Enter DEPARTURE time from (e.g. 16:10) [optional]: ", default=None)
+        departure_min_departure_time = get_optional_input("Enter DEPARTURE time from (HH:MM e.g. 16:10) [optional]: ", default=None)
         try:
             if departure_min_departure_time == None:
                     break
@@ -133,7 +133,7 @@ def handle_basic_search(amadeus_client):
 
 
     while True:
-        return_date = get_optional_input("Enter your return date (e.g. 2024-12-30) [optional]: ", default=None)
+        return_date = get_optional_input("Enter your return date (YYYY-MM-DD e.g. 2024-12-30) [optional]: ", default=None)
         try:
             if return_date == None:
                 break
@@ -144,7 +144,7 @@ def handle_basic_search(amadeus_client):
             print("\n return_date must be in the format 'YYYY-MM-DD' and it must be after the departure date. \n")
 
     while True:
-        return_max_arrival_time = get_optional_input("Enter the maximum ARRIVAL time  (e.g. 22:00) [optional]: ", default=None)
+        return_max_arrival_time = get_optional_input("Enter the maximum ARRIVAL time  (HH:MM e.g. 22:00) [optional]: ", default=None)
         try:
             if return_max_arrival_time == None:
                     break
@@ -204,7 +204,7 @@ def handle_weekdays_search(amadeus_client):
             print("\n It must be a day of the week e.g. 'Monday'. \n")
 
     while True:
-        departure_min_date = input("Enter DEPARTURE date from (e.g. 2024-12-23): ")
+        departure_min_date = input("Enter DEPARTURE date from (YYYY-MM-DD e.g. 2024-12-23): ")
         try:
             assert datetime.strptime(departure_min_date, "%Y-%m-%d")
             assert datetime.strptime(departure_min_date, "%Y-%m-%d")>datetime.now()
@@ -213,7 +213,7 @@ def handle_weekdays_search(amadeus_client):
             print("\n Date must be in the format 'YYYY-MM-DD' and it must be in the future. \n")
 
     while True:
-        return_max_date = input("Enter maximum RETURN date on (e.g. 2024-12-23): ")
+        return_max_date = input("Enter maximum RETURN date on (YYYY-MM-DD e.g. 2024-12-23): ")
         try:
             assert datetime.strptime(return_max_date, "%Y-%m-%d")
             assert datetime.strptime(return_max_date, "%Y-%m-%d")>datetime.strptime(departure_min_date, "%Y-%m-%d")
