@@ -432,10 +432,10 @@ class WeekDaysSearch(FlightSearch):
             return
         else:
             print("You are looking for a round trip with the following characteristics: \n"
-                  f"- Within range: {self.departure_min_date} - {self.return_max_date} \n"
-                  f"- Passengers: {self.passengers} \n"
-                  f"- Leaving on: {self.departure_weekday} \n"
-                  f"- Coming back the next: {self.return_weekday} \n")
+                  f"- Range: {self.departure_min_date} - {self.return_max_date} \n"
+                  f"- Passenger/s: {self.passengers} \n"
+                  f"- Departure day: {self.departure_weekday} \n"
+                  f"- Returning day: {self.return_weekday} \n")
 
             print("Cheapest Option: \n"
                   f"- Departure Flight: {self.departure_weekday} {self.results[0]['cheapest_departure_flight'].departure_time.split('T')[0]} {self.results[0]['cheapest_departure_flight'].departure_time.split('T')[1]} (€{self.results[0]['cheapest_departure_flight'].price}) \n"
